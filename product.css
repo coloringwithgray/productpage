@@ -1,26 +1,26 @@
-/* Import or Define Lvvvdy Font */
+/* Load Lvvvdy font locally (adjust if your .otf file name or path differs) */
 @font-face {
   font-family: 'Lvvvdy';
   src: url('Lvvvdy.otf') format('opentype');
 }
 
-/* Basic reset for full-screen background */
-html, body {
+/* Base reset & body styling */
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: hidden; /* Single-screen layout; remove if you plan to scroll */
   font-family: 'Lvvvdy', sans-serif;
-  /* If you want a fallback font, add it after 'Lvvvdy', e.g. 'Lvvvdy', Arial, sans-serif */
 }
 
-/* Full-page background using mirrorroom.png */
+/* Full-screen background using mirrorroom.png */
 body {
   background: url('mirrorroom.png') no-repeat center center;
   background-size: cover;
-  /* If you want the background to stay fixed on scroll (if any), add: background-attachment: fixed; */
 }
 
-/* Center the text in the middle of the viewport */
+/* Center the text in the viewport */
 .centered-text {
   position: absolute;
   top: 50%;
@@ -30,7 +30,7 @@ body {
   color: #fff; /* White text for contrast */
 }
 
-/* Adjust headings and paragraphs */
+/* Adjust heading & paragraph sizes */
 .centered-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
