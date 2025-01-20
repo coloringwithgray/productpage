@@ -1,0 +1,134 @@
+/**********************************************
+ *  RESET & BASE STYLES
+ **********************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Amatic SC', sans-serif; /* Or your preferred font */
+  background: #f5f5f5; /* Fallback color if animation doesn't load */
+  overflow: hidden; /* Prevent scrolling if you want a fixed page */
+}
+
+.mirror-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* 
+    We'll create a "mirror-like" background with a subtle gradient,
+    then place a "gleam" animation on top with a pseudo-element.
+  */
+  background: linear-gradient(120deg, #cccccc, #eeeeee);
+  /* The above is a base silverish gradient for a "mirror" vibe. */
+  overflow: hidden; /* to contain pseudo-element if it overflows */
+}
+
+/**********************************************
+ *  MIRROR "GLEAM" EFFECT (Pseudo-element)
+ **********************************************/
+.mirror-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  /* 
+    A white-to-transparent gradient 
+    which we'll slide across the screen
+  */
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.0) 50%
+  );
+  transform: skewX(-30deg);
+  animation: gleam 3s infinite linear;
+  opacity: 0.5; /* Adjust to make the gleam more or less subtle */
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Keyframes to sweep the gradient from left to right and loop */
+@keyframes gleam {
+  0% {
+    transform: translateX(-100%) skewX(-30deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-30deg);
+  }
+}
+
+/**********************************************
+ *  BOTTLE & "COMING SOON" TEXT
+ **********************************************/
+.bottle-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2; /* Above the background and gleam effect */
+}
+
+.bottle-silhouette {
+  max-width: 250px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.8; /* Slight transparency if you want a "ghostly" silhouette */
+}
+
+.coming-soon {
+  margin-top: 1rem;
+  font-size: 3rem;
+  color: #333;
+  text-transform: uppercase;
+}
+
+/**********************************************
+ *  NOTES
+ **********************************************/
+.notes {
+  position: absolute;
+  bottom: 60px; /* Adjust if you want more or less space from bottom */
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  z-index: 2; /* Above the background and gleam */
+}
+
+.notes > div {
+  flex: 1;
+  font-size: 2rem;
+  color: #444;
+}
+
+/* For left/middle/right notes, you can do custom styling if desired */
+.note-left { /* Apple note */
+  font-weight: bold;
+}
+.note-middle { /* Ambroxan note */
+  font-weight: bold;
+}
+.note-right { /* Exalting note */
+  font-weight: bold;
+}
+
+/**********************************************
+ *  FOOTER
+ **********************************************/
+footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #333;
+  font-size: 1.5rem;
+  z-index: 2;
+}
