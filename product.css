@@ -16,32 +16,54 @@ html, body {
 }
 
 /************************************************
- * ANIMATED GRADIENT BACKGROUND
+ * MIRROR BACKGROUND + GLEAM OVERLAY
  ************************************************/
-/* 
-   A multi-stop gradient that shifts across
-   the background to mimic "bouncing light."
+/*
+  We'll display 'mirrorroom.png' as the background,
+  and a pseudo-element adds a "gleam" sweep across it.
 */
 .mirror-room-bg {
   position: relative;
   width: 100%;
   height: 100%;
-  /* Subtle color stops for a mirror-like vibe */
-  background: linear-gradient(120deg, #cfcfcf, #eeeeee, #cfcfcf);
-  background-size: 200% 200%;
-  animation: shiftGradient 6s ease-in-out infinite;
-  overflow: hidden;
+
+  /* Mirror room image as full cover background */
+  background: url('mirrorroom.png') no-repeat center center;
+  background-size: cover;
+
+  overflow: hidden; /* contain any absolute children */
 }
 
-@keyframes shiftGradient {
+/* The gleam effect is created by this pseudo-element overlay */
+.mirror-room-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+
+  /* White-to-transparent gradient that slides across the page */
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 50%
+  );
+
+  transform: skewX(-30deg);
+  /* Animate the gleam with a simple left-to-right sweep */
+  animation: gleam 3s infinite linear;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1; /* sits above the background, behind the glass panel */
+}
+
+@keyframes gleam {
   0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
+    transform: translateX(-100%) skewX(-30deg);
   }
   100% {
-    background-position: 0% 50%;
+    transform: translateX(200%) skewX(-30deg);
   }
 }
 
@@ -58,13 +80,14 @@ html, body {
   padding: 2rem 1.5rem;
   text-align: center;
 
+  /* Frosted glass effect */
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   backdrop-filter: blur(10px) brightness(1.1);
   -webkit-backdrop-filter: blur(10px) brightness(1.1);
 
-  z-index: 2; /* above the gradient background */
+  z-index: 2; /* above the background + gleam */
 }
 
 /************************************************
