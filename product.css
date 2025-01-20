@@ -18,10 +18,6 @@ html, body {
 /************************************************
  * MIRROR BACKGROUND + GLEAM OVERLAY
  ************************************************/
-/*
-  We'll display 'mirrorroom.png' as the background,
-  and a pseudo-element adds a "gleam" sweep across it.
-*/
 .mirror-room-bg {
   position: relative;
   width: 100%;
@@ -31,10 +27,10 @@ html, body {
   background: url('mirrorroom.png') no-repeat center center;
   background-size: cover;
 
-  overflow: hidden; /* contain any absolute children */
+  overflow: hidden; /* contain absolute children */
 }
 
-/* The gleam effect is created by this pseudo-element overlay */
+/* The gleam overlay (white gradient sliding across) */
 .mirror-room-bg::before {
   content: "";
   position: absolute;
@@ -43,7 +39,6 @@ html, body {
   width: 50%;
   height: 100%;
 
-  /* White-to-transparent gradient that slides across the page */
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0.2) 0%,
@@ -51,11 +46,10 @@ html, body {
   );
 
   transform: skewX(-30deg);
-  /* Animate the gleam with a simple left-to-right sweep */
   animation: gleam 3s infinite linear;
   opacity: 0.5;
   pointer-events: none;
-  z-index: 1; /* sits above the background, behind the glass panel */
+  z-index: 1; /* Over background, under glass panel */
 }
 
 @keyframes gleam {
@@ -70,6 +64,12 @@ html, body {
 /************************************************
  * GLASS PANEL (GLASSMORPHISM)
  ************************************************/
+/*
+  The fallback if backdrop-filter isn't supported:
+  'background' + 'border' ensures at least 
+  a semi-transparent panel if Safari 15 
+  somehow doesn't handle the blur (rare).
+*/
 .glass-panel {
   position: absolute;
   top: 50%;
@@ -80,14 +80,16 @@ html, body {
   padding: 2rem 1.5rem;
   text-align: center;
 
-  /* Frosted glass effect */
+  /* Primary glass effect */
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
-  backdrop-filter: blur(10px) brightness(1.1);
-  -webkit-backdrop-filter: blur(10px) brightness(1.1);
 
-  z-index: 2; /* above the background + gleam */
+  /* For Safari / older browsers we also add -webkit-backdrop-filter */
+  -webkit-backdrop-filter: blur(10px) brightness(1.1);
+  backdrop-filter: blur(10px) brightness(1.1);
+
+  z-index: 2; /* above background + gleam */
 }
 
 /************************************************
