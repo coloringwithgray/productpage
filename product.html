@@ -3,32 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reflections of You - Product Page</title>
-  <!-- Link to external CSS -->
-  <link rel="stylesheet" href="product.css" />
-  <!-- (Optional) Google Font -->
+  <title>Reflections of You - Coming Soon</title>
+
+  <!-- Google Fonts (Heading + Body) -->
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Open+Sans&display=swap"
   />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="product.css" />
 </head>
 <body>
-  <!-- Main container for background + all content -->
+  <!-- Main container with mirror background & shimmer effect -->
   <div class="mirror-background">
-    <!-- Bottle silhouette + "Coming Soon" text -->
-    <div class="bottle-container">
-      <!-- Replace "bottle-silhouette.png" with your silhouette image, or remove the <img> if you prefer a pure CSS silhouette -->
+    <!-- Optional tagline / brand statement -->
+    <div class="tagline">Reflections of You</div>
+
+    <!-- Bottle container (centered) -->
+    <div class="bottle-container fade-in">
+      <!-- Swap this image with your own silhouette or remove the <img> if you only want text -->
+      <img
+        src="bottle-silhouette.png"
+        alt="Bottle Silhouette"
+        class="bottle-silhouette"
+      />
       <h1 class="coming-soon">Coming Soon</h1>
     </div>
 
-    <!-- Notes section at the bottom -->
-    <div class="notes">
-      <div class="note-left">Apple</div>
-      <div class="note-middle">Ambroxan</div>
-      <div class="note-right">Exalting</div>
+    <!-- Notes section (with placeholder icons) -->
+    <div class="notes-section">
+      <div class="note">
+        <!-- Placeholder icon or remove if you don't have an icon -->
+        <img src="apple-icon.png" alt="Apple" class="note-icon" />
+        <p>Apple</p>
+      </div>
+      <div class="note">
+        <img src="ambroxan-icon.png" alt="Ambroxan" class="note-icon" />
+        <p>Ambroxan</p>
+      </div>
+      <div class="note">
+        <img src="abstract-icon.png" alt="Exalting" class="note-icon" />
+        <p>Exalting</p>
+      </div>
     </div>
 
-    <!-- Footer stating these are the notes -->
+    <!-- Footer text -->
     <footer>These are the notes</footer>
   </div>
 </body>
