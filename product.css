@@ -1,4 +1,4 @@
-/* Load Lvvvdy font locally (adjust if your .otf file name or path differs) */
+/* Load Lvvvdy font locally (adjust if .otf file name differs) */
 @font-face {
   font-family: 'Lvvvdy';
   src: url('Lvvvdy.otf') format('opentype');
@@ -27,37 +27,48 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #fff; /* White text for contrast */
+  color: #fff;
 }
 
 /* Larger header with text shadow */
 .centered-text h1 {
-  font-size: 4rem;               
-  margin-bottom: 2rem;           
+  font-size: 4rem;
+  margin-bottom: 2rem;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 /* Subtext also larger & spaced */
 .centered-text p {
   font-size: 2.5rem;
-  margin: 0 0 2rem; /* Add space below for the button */
-  letter-spacing: 0.1em;         
+  margin: 0 0 2rem; /* bottom space for the button */
+  letter-spacing: 0.1em;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* Instagram follow button styling */
+/* Instagram follow button (enhanced) */
 .instagram-btn {
-  display: inline-block;
+  display: inline-flex;       /* so icon & text align nicely */
+  align-items: center;
+  gap: 0.5rem;               /* space between icon & text */
   padding: 1rem 2rem;
   background: rgba(0, 0, 0, 0.4);
   color: #fff;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   border-radius: 8px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
+/* On hover: slight darkening & zoom */
 .instagram-btn:hover {
   background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.05);
+}
+
+/* Optional styling for the inline SVG icon */
+.instagram-btn svg {
+  width: 24px;
+  height: 24px;
 }
