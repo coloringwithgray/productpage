@@ -1,6 +1,6 @@
-/***************************************
- * BASE RESET & GLOBAL STYLES
- ***************************************/
+/************************************************
+ * RESET & BASE
+ ************************************************/
 * {
   margin: 0;
   padding: 0;
@@ -15,24 +15,39 @@ html, body {
   overflow: hidden; /* prevents scrolling; remove if needed */
 }
 
-/***************************************
- * ROOM OF MIRRORS BACKGROUND
- ***************************************/
+/************************************************
+ * ANIMATED GRADIENT BACKGROUND
+ ************************************************/
 /* 
-  'mirrorroom.jpg' should be your "room of mirrors" background.
-  The image is stretched to cover the entire background.
+   A multi-stop gradient that shifts across
+   the background to mimic "bouncing light."
 */
 .mirror-room-bg {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url('mirrorroom.PNG') no-repeat center center / cover;
+  /* Subtle color stops for a mirror-like vibe */
+  background: linear-gradient(120deg, #cfcfcf, #eeeeee, #cfcfcf);
+  background-size: 200% 200%;
+  animation: shiftGradient 6s ease-in-out infinite;
   overflow: hidden; /* contain absolute elements inside */
 }
 
-/***************************************
+@keyframes shiftGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/************************************************
  * GLASS PANEL (GLASSMORPHISM)
- ***************************************/
+ ************************************************/
 .glass-panel {
   position: absolute;
   top: 50%;
@@ -42,17 +57,34 @@ html, body {
   max-width: 600px;
   padding: 2rem 1.5rem;
   text-align: center;
+
+  /* Frosted glass look */
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   backdrop-filter: blur(10px) brightness(1.1);
   -webkit-backdrop-filter: blur(10px) brightness(1.1);
-  z-index: 2; /* above the background */
+
+  z-index: 2; /* above the gradient background */
 }
 
-/***************************************
+/************************************************
+ * FADE-IN ANIMATION
+ ************************************************/
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/************************************************
  * TAGLINE
- ***************************************/
+ ************************************************/
 .tagline {
   font-family: 'Amatic SC', cursive;
   font-size: 3rem;
@@ -60,9 +92,9 @@ html, body {
   margin-bottom: 1rem;
 }
 
-/***************************************
+/************************************************
  * BOTTLE CONTAINER
- ***************************************/
+ ************************************************/
 .bottle-container {
   text-align: center;
 }
@@ -80,9 +112,9 @@ html, body {
   margin-bottom: 0;
 }
 
-/***************************************
+/************************************************
  * NOTES SECTION
- ***************************************/
+ ************************************************/
 .notes-section {
   position: absolute;
   bottom: 60px;
@@ -114,9 +146,9 @@ html, body {
   color: #fff;
 }
 
-/***************************************
+/************************************************
  * FOOTER
- ***************************************/
+ ************************************************/
 footer {
   position: absolute;
   bottom: 20px;
@@ -128,23 +160,9 @@ footer {
   z-index: 2;
 }
 
-/***************************************
- * FADE-IN ANIMATION
- ***************************************/
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 1.5s ease forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-/***************************************
+/************************************************
  * RESPONSIVE (MOBILE)
- ***************************************/
+ ************************************************/
 @media (max-width: 600px) {
   .glass-panel {
     padding: 1.5rem;
