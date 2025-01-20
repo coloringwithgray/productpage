@@ -35,6 +35,11 @@ body {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
+.centered-text h1,
+.centered-text p {
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
 
 .centered-text p {
   font-size: 2rem;
