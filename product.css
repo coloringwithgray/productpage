@@ -30,7 +30,7 @@ html, body {
   background: linear-gradient(120deg, #cfcfcf, #eeeeee, #cfcfcf);
   background-size: 200% 200%;
   animation: shiftGradient 6s ease-in-out infinite;
-  overflow: hidden; /* contain absolute elements inside */
+  overflow: hidden;
 }
 
 @keyframes shiftGradient {
@@ -58,7 +58,6 @@ html, body {
   padding: 2rem 1.5rem;
   text-align: center;
 
-  /* Frosted glass look */
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
@@ -102,7 +101,7 @@ html, body {
 .bottle-silhouette {
   max-width: 180px;
   margin-bottom: 1rem;
-  opacity: 0.9; /* slight transparency */
+  opacity: 0.9;
 }
 
 .coming-soon {
