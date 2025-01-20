@@ -30,17 +30,34 @@ body {
   color: #fff; /* White text for contrast */
 }
 
-/* Larger header with more space, plus text shadow */
+/* Larger header with text shadow */
 .centered-text h1 {
-  font-size: 4rem;               /* Bigger font */
-  margin-bottom: 2rem;           /* Extra space between header & subtext */
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);  /* Shadow for legibility */
+  font-size: 4rem;               
+  margin-bottom: 2rem;           
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* Subtext is also larger & spaced out */
+/* Subtext also larger & spaced */
 .centered-text p {
   font-size: 2.5rem;
-  margin: 0;
-  letter-spacing: 0.1em;         /* Slight letter spacing for style */
+  margin: 0 0 2rem; /* Add space below for the button */
+  letter-spacing: 0.1em;         
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Instagram follow button styling */
+.instagram-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s ease;
+}
+
+.instagram-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
 }
